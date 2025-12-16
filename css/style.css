@@ -402,3 +402,16 @@ button:disabled {
 	transform: scale(0.98);
 	box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
+
+
+.spot_name {
+	color: #913a3a;
+}
+
+.spotInfo_label {
+	color: #4d6cba;
+}
+
+.spotInfo_free {
+	color: #21de79;
+}

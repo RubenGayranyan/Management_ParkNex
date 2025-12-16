@@ -8,9 +8,9 @@ export function renderParkingInfo(spots, onSelect) {
         const div = document.createElement("div");
         div.className = "parking-card";
         div.innerHTML = `
-            <h3>${spot.name}</h3>
-            <p>Total slots: ${spot.slots.length}</p>
-            <p>Available: <b>${free}</b></p>
+            <h2 class="spot_name">${spot.name}</h3>
+            <b class="spotInfo_label">Total slots:</b> <span class="spotInfo_total">${spot.slots.length}</span><br>
+            <b class="spotInfo_label">Available:</b> <span class="spotInfo_free">${free}</span>
         `;
 
         div.onclick = () => onSelect(spot);

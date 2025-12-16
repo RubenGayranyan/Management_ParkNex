@@ -13,5 +13,5 @@ export function bookSlot(slot, data) {
         ...data
     };
 
-    alert("Booking code: " + slot.booking.code);
+    alert("You've successfully booked your parking. Here's your code, please save it: " + slot.booking.code);
 }
