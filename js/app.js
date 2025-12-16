@@ -2,6 +2,28 @@ import { parkingSpots } from "./data.js";
 import { renderParkingInfo, renderSlots } from "./ui.js";
 import { bookSlot } from "./booking.js";
 
+let bookings = [];
+
+async function loadBookings() {
+    try {
+        const res = await fetch("./bookings.json");
+        bookings = await res.json();
+        // Применяем брони к парковкам
+        bookings.forEach(b => {
+            const spot = parkingSpots.find(s => s.id === b.spotId);
+            if (!spot) return;
+            const slot = spot.slots.find(s => s.id === b.slotId);
+            if (!slot) return;
+            slot.free = false;
+            slot.booking = b;
+        });
+    } catch(e) {
+        console.error("Could not load bookings.json", e);
+    }
+}
+
+await loadBookings();
+
 /* ================= MAP ================= */
 
 let map = L.map("map").setView([40.18, 44.51], 13);
@@ -52,16 +74,25 @@ document.getElementById("bookBtn").onclick = () => {
         return;
     }
 
-    bookSlot(selectedSlot, {
-        name: name.value.trim(),
-        model: model.value.trim(),
-        plate: plate.value.trim(),
-        arrival: arrival.value,
-        leaving: leaving.value
-    });
+    const data = {
+        name: document.getElementById("name").value.trim(),
+        model: document.getElementById("model").value.trim(),
+        plate: document.getElementById("plate").value.trim(),
+        arrival: document.getElementById("arrival").value,
+        leaving: document.getElementById("leaving").value
+    };
 
-    renderSlots(selectedSpot, slot => selectedSlot = slot);
-    renderParkingInfo(parkingSpots, selectSpot);
+    const newBooking = bookSlot(selectedSlot, data);
+
+    if (newBooking) {
+        bookings.push({
+            ...newBooking,
+            spotId: selectedSpot.id,
+            slotId: selectedSlot.id
+        });
+        renderSlots(selectedSpot, slot => selectedSlot = slot);
+        renderParkingInfo(parkingSpots, selectSpot);
+    }
 };
 
 /* ================= SEARCH BY CODE ================= */
@@ -76,34 +107,23 @@ document.getElementById("lookupBtn").onclick = () => {
         return;
     }
 
-    let found = null;
-
-    for (const spot of parkingSpots) {
-        for (const slot of spot.slots) {
-            if (slot.booking && slot.booking.code === code) {
-                found = { spot, slot };
-                break;
-            }
-        }
-    }
+    const found = bookings.find(b => b.code === code);
 
     if (!found) {
         result.innerHTML = `<p class="error">Booking not found</p>`;
         return;
     }
 
-    const b = found.slot.booking;
-
     result.innerHTML = `
         <div class="booking-result">
             <h4>Booking Found ✅</h4>
-            <p><b>Name:</b> ${b.name}</p>
-            <p><b>Car:</b> ${b.model}</p>
-            <p><b>Plate:</b> ${b.plate}</p>
-            <p><b>Parking:</b> ${found.spot.name}</p>
-            <p><b>Slot:</b> #${found.slot.id}</p>
-            <p><b>Arrival:</b> ${new Date(b.arrival).toLocaleString()}</p>
-            <p><b>Leaving:</b> ${new Date(b.leaving).toLocaleString()}</p>
+            <p><b>Name:</b> ${found.name}</p>
+            <p><b>Car:</b> ${found.model}</p>
+            <p><b>Plate:</b> ${found.plate}</p>
+            <p><b>Parking:</b> ${parkingSpots.find(s => s.id === found.spotId).name}</p>
+            <p><b>Slot:</b> #${found.slotId}</p>
+            <p><b>Arrival:</b> ${new Date(found.arrival).toLocaleString()}</p>
+            <p><b>Leaving:</b> ${new Date(found.leaving).toLocaleString()}</p>
         </div>
     `;
 };

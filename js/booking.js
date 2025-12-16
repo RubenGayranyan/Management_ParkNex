@@ -3,15 +3,29 @@ export function bookSlot(slot, data) {
     const arrival = new Date(data.arrival);
     const leaving = new Date(data.leaving);
 
-    if (arrival < now) return alert("Arrival in past is forbidden");
-    if (leaving - arrival < 3600000)
-        return alert("Minimum booking is 1 hour");
+    if (arrival < now) {
+        alert("Arrival cannot be in the past");
+        return null;
+    }
 
-    slot.free = false;
-    slot.booking = {
+    if (leaving - arrival < 3600000) {
+        alert("Minimum booking is 1 hour");
+        return null;
+    }
+
+    if (!slot.free) {
+        alert("Slot already booked!");
+        return null;
+    }
+
+    const booking = {
         code: Math.random().toString(36).substr(2, 6).toUpperCase(),
         ...data
     };
 
-    alert("You've successfully booked your parking. Here's your code, please save it: " + slot.booking.code);
+    slot.free = false;
+    slot.booking = booking;
+
+    alert("Booking confirmed! Your code: " + booking.code);
+    return booking;
 }

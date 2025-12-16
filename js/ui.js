@@ -24,6 +24,8 @@ export function renderSlots(spot, onSelectSlot) {
 
     document.getElementById("parkingName").textContent = spot.name;
 
+    let selectedDiv = null; // для текущего выбранного слота
+
     spot.slots.forEach(slot => {
         const el = document.createElement("div");
         el.className = `slot ${slot.free ? "free" : "busy"}`;
@@ -36,7 +38,16 @@ export function renderSlots(spot, onSelectSlot) {
             el.innerHTML += `<small>Free in ${mins} min</small>`;
         }
 
-        if (slot.free) el.onclick = () => onSelectSlot(slot);
+        if (slot.free) {
+            el.onclick = () => {
+                // Сброс старого выделения
+                if (selectedDiv) selectedDiv.classList.remove("selected");
+                el.classList.add("selected"); // новый выделенный
+                selectedDiv = el;
+
+                onSelectSlot(slot);
+            }
+        }
 
         box.appendChild(el);
     });

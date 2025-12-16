@@ -5,7 +5,7 @@ export const parkingSpots = [
         coords: [40.1772, 44.5035],
         slots: Array.from({ length: 10 }, (_, i) => ({
             id: i + 1,
-            free: Math.random() > 0.4,
+            free: true,
             booking: null
         }))
     },
@@ -15,7 +15,7 @@ export const parkingSpots = [
         coords: [40.1855, 44.5152],
         slots: Array.from({ length: 10 }, (_, i) => ({
             id: i + 1,
-            free: Math.random() > 0.3,
+            free: true,
             booking: null
         }))
     }
