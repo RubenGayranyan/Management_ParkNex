@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ParkNex – Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <img class="logoImg" src="img/logo.svg" />
+        <div class="logoText">PARK<span class="logoText2">NEX</span></div>
+    </div>
+    <a href="booking.html" class="btn">Book Parking</a>
+</nav>
+
+<div class="container">
+
+    <div class="map-section">
+        <div id="map"></div>
+        <div id="parkingInfo"></div>
+    </div>
+
+    <div class="booking-section">
+        <h2 id="parkingName">Select a parking spot</h2>
+        <div id="slots"></div>
+
+        <div class="form">
+            <input id="name" placeholder="Your Name" disabled>
+            <input id="model" placeholder="Car Model" disabled>
+            <input id="plate" placeholder="Car Number Plate" disabled>
+
+            <label>Arrival</label>
+            <input type="datetime-local" id="arrival" disabled>
+
+            <label>Leaving</label>
+            <input type="datetime-local" id="leaving" disabled>
+
+            <button id="bookBtn" disabled>Confirm Booking</button>
+        </div>
+    </div>
+
+    <div class="lookup">
+        <h3>Find My Booking</h3>
+        <input id="lookupCode" placeholder="Booking Code">
+        <button id="lookupBtn">Search</button>
+        <div id="lookupResult"></div>
+    </div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script type="module" src="js/app.js"></script>
+
+</body>
+</html>

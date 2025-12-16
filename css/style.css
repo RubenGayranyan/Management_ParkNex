@@ -1,0 +1,404 @@
+* {
+	box-sizing: border-box;
+	font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+	margin: 0;
+	background: #f1f5f9;
+	color: #0f172a;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 30px;
+	background: linear-gradient(120deg, #4d6cba, #913a3a);;
+	color: white;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+}
+
+.logoImg {
+	width: 25%;
+}
+
+.logoText {
+	padding-left: 10px;
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.logoText2 {
+	color: rgb(145, 58, 58);
+	font-weight: bold;
+	font-style: italic;
+}
+
+.about_title {
+	font-weight: bold;
+	font-size: 36px;
+	text-align: center;
+	color: #4d6cba;
+	text-transform: uppercase;
+	padding-bottom: 15px;
+}
+
+.about_content {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.about_img {
+	width: 40%;
+	height: 40%;
+	padding-left: 50px;
+}
+
+.about_end {
+	font-weight: bold;
+	font-size: 18px;
+	color: #913a3a;
+}
+
+.btn {
+	background: white;
+	color: #2563eb;
+	padding: 8px 16px;
+	border-radius: 20px;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.titlePage {
+	padding: 100px 20px;
+	text-align: center;
+	background-image: url("../img/background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 60vh;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	justify-content: space-around;
+}
+
+.logotext_TitlePage {
+	font-size: 84px;
+	font-weight: bold;
+	text-shadow: 9px 10px 9px rgba(0, 0, 0, 0.9);
+}
+
+.slogan {
+	font-size: 56px;
+	font-weight: 400;
+	text-transform: uppercase;
+	text-shadow: 9px 10px 9px rgba(0, 0, 0, 0.9);
+}
+
+.slogan.highlight {
+	font-weight: bold;
+	color: rgb(145, 58, 58);	
+}
+
+.info, .about {
+	padding: 60px 20px;
+	max-width: 900px;
+	margin: auto;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 20px;
+}
+
+.map-section {
+	display: flex;
+	gap: 20px;
+}
+
+#map {
+	height: 400px;
+	flex: 2;
+	border-radius: 12px;
+}
+
+#parkingInfo {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.parking-card {
+	background: white;
+	padding: 15px;
+	border-radius: 12px;
+	cursor: pointer;
+	box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.booking-section {
+	margin-top: 30px;
+	background: white;
+	padding: 20px;
+	border-radius: 12px;
+}
+
+#slots {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.slot {
+	padding: 15px;
+	text-align: center;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+.slot.free {
+	background: #22c55e;
+	color: white;
+	cursor: pointer;
+}
+
+.slot.busy {
+	background: #ef4444;
+	color: white;
+	cursor: not-allowed;
+}
+
+.slot small {
+	display: block;
+	font-size: 10px;
+}
+
+.form input, .form button {
+	width: 100%;
+	padding: 10px;
+	margin: 5px 0;
+}
+
+.lookup {
+	margin-top: 30px;
+	background: white;
+	padding: 20px;
+	border-radius: 12px;
+}
+
+/* ====== FORM ELEMENTS ====== */
+
+input {
+	border: 2px solid #e5e7eb;
+	border-radius: 10px;
+	padding: 12px;
+	font-size: 14px;
+	transition: 0.3s;
+}
+
+input:focus {
+	outline: none;
+	border-color: #2563eb;
+	box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+input:disabled {
+	background: #f1f5f9;
+	cursor: not-allowed;
+}
+
+button {
+	background: linear-gradient(135deg, #2563eb, #0ea5e9);
+	color: white;
+	border: none;
+	border-radius: 25px;
+	padding: 12px;
+	font-size: 15px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+button:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+button:disabled {
+	background: #94a3b8;
+	cursor: not-allowed;
+	box-shadow: none;
+}
+
+/* ====== SEARCH RESULT ====== */
+
+.booking-result {
+	background: #ecfeff;
+	border-left: 5px solid #06b6d4;
+	padding: 15px;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
+.booking-result h4 {
+	margin-top: 0;
+	color: #0e7490;
+}
+
+.error {
+	color: #dc2626;
+	font-weight: bold;
+}
+
+.tariffs-section {
+	padding: 80px 20px;
+	background: radial-gradient(circle at top, #eef2ff, #f8fafc);
+	font-family: 'Inter', sans-serif;
+}
+
+.tariffs-header {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.tariffs-header h2 {
+	font-size: 42px;
+	font-weight: 800;
+	color: #111827;
+}
+
+.tariffs-header p {
+	margin-top: 10px;
+	color: #6b7280;
+	font-size: 18px;
+}
+
+.tariffs-grid {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 24px;
+}
+
+.tariff-card {
+	position: relative;
+	background: white;
+	border-radius: 24px;
+	padding: 30px;
+	box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+	transition: all 0.3s ease;
+	overflow: hidden;
+}
+
+.tariff-card:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+.tariff-card h3 {
+	font-size: 22px;
+	margin-bottom: 20px;
+	color: #111827;
+}
+
+.price {
+	font-size: 34px;
+	font-weight: 800;
+	color: #2563eb;
+}
+
+.price span {
+	font-size: 18px;
+}
+
+.note {
+	display: inline-block;
+	margin-top: 12px;
+	font-size: 14px;
+	color: #6b7280;
+}
+
+.dual-price p {
+	font-size: 16px;
+	margin: 8px 0;
+}
+
+.badge {
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	background: linear-gradient(135deg, #3c8d5a, #0bda57);
+	color: white;
+	padding: 6px 14px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.badge.red {
+	background: linear-gradient(135deg, #9e5f5f, #d51212);;
+}
+
+.badge.dark {
+	background: linear-gradient(135deg, #111827, #374151);
+}
+
+.tariff-card.highlight {
+	border: 2px solid #6366f1;
+}
+
+.best {
+	background: linear-gradient(135deg, #6366f1, #3b82f6);
+	color: white;
+}
+
+.best h3, .best .price, .best .note {
+	color: white;
+}
+
+.premium {
+	background: linear-gradient(135deg, #0f172a, #1e293b);
+	color: white;
+}
+
+.premium h3, .premium .price {
+	color: #f9fafb;
+}
+
+.btn_gotopark {
+	margin-top: 50px;
+	display: inline-block;
+	padding: 18px 50px;
+	font-size: 20px;
+	font-weight: 700;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 50px;
+	background: linear-gradient(135deg, #6366f1, #3b82f6, #913a3a);
+	background-size: 300% 300%;
+	box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+	transition: all 0.4s ease;
+}
+
+.btn_gotopark:hover {
+	background-position: 100% 0;
+	transform: scale(1.05);
+	box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.btn_gotopark:active {
+	transform: scale(0.98);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
