@@ -6,22 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="leaflet/leaflet.css">
+    <script src="leaflet/leaflet.js"></script>
+    <link rel="stylesheet" href="css/media.css">
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="logo">
+    <div class="logo">  
         <img class="logoImg" src="img/logo.svg" />
         <div class="logoText">PARK<span class="logoText2">NEX</span></div>
     </div>
     <div>
         <a href="index.html" class="btn">Home</a>
-        <a href="booking.html" class="btn">Booking</a>
+        <a href="booking.html" class="btn active">Bookings</a>
     </div>
 </nav>
 
-<div class="container">
+<div class="container booking">
 
     <div class="map-section">
         <div id="map"></div>

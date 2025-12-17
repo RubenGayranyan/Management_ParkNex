@@ -1,0 +1,23 @@
+@media (max-width: 950px) {
+	.titlePage {
+		flex-direction: column;
+	}
+	.logotext_TitlePage {
+		font-size: 64px;
+	}
+	.slogan {
+		font-size: 36px;
+	}
+	.slogan_block {
+		line-height: 0.5;
+	}
+	.btn.active {
+		display: none;
+	}
+	.map-section {
+		flex-direction: column;
+	}
+	#map {
+	 	height: 300px;
+	}
+}
